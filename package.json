@@ -5,6 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "ava test.mjs",
+    "route": "jest",
+    "route:visuel": "jest --watchAll --coverage",
     "start": "node -r dotenv/config server.js",
     "dev": "nodemon -r dotenv/config server.js"
   },
