@@ -1,4 +1,4 @@
-name: First CI
+name: Premier CI
 
 on:
   push:
@@ -6,35 +6,35 @@ on:
 
 jobs:
   test:
-    if: ${{ !contains(github.event.head_commit.message, '#code' ) }}
+    if: ${{ !contains(github.event.head_commit.message, '#code') }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node
+      - name: Configuration de node
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - name: Install dependencies
+      - name: Installation des dépendances
         run: npm ci
-      - name: Run test 
+      - name: Exécution des tests
         run: npm test
 
-  jobs:
+  routage:
     needs: [test]
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node
+      - name: Configuration de node
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - name: Install dependencies
+      - name: Installation des dépendances
         run: npm ci
-      - name: Run test
+      - name: Exécution des tests
         run: npm run route
 
   hello:
@@ -44,11 +44,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node
+      - name: Configuration de node
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - name: Install dependencies
+      - name: Installation des dépendances
         run: npm ci
-      - name: Run test
-        run: echo hello World
+      - name: Exécution des tests
+        run: echo Bonjour le monde
+
+  server:
+    needs: [test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configuration de node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Installation des dépendances
+        run: npm ci
+      - name: Exécution des tests
+        run: npm run server
