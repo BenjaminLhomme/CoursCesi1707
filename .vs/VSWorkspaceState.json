@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\github",
-    "\\github\\workflow",
-    "\\routers"
+    "\\.github\\workflows"
   ],
-  "SelectedNode": "\\github\\workflow\\firstjs.yml",
+  "SelectedNode": "\\.dockerignore",
   "PreviewInSolutionExplorer": false
 }

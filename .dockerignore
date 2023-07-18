@@ -1,0 +1,8 @@
+dockerignore
+```node_modules
+```coverage
+	.github
+	script
+	pm2.config.js
+	test
+	test.mjs
