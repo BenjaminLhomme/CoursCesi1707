@@ -1,0 +1,26 @@
+name: Docker SSH update
+
+  on:
+    workflow_run:
+      worflows: ["Docker"]
+      types:
+        - completed
+
+  jobs:
+    update_ssh: 
+      if: ${{ github.workflow_run.conclusion == success}}
+      name: Update DockerContainer
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Execute Docker SSH
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            port: ${{ secrets.PORT }}
+
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            key: ${{ secrets.KEY }}
+            script: bash update.sh
+           
